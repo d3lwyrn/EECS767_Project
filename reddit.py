@@ -1,14 +1,19 @@
+import os
+
 def task() -> None:
 	dirs = [
 		"reddit/pokemon/"
 	]
 	data = []
-	for path in dirs:
-		data.append(**redditor(path))
+	for dir in dirs:
+		for filename in os.listdir(dir):
+			file_path = os.path.join(dir, filename)
+			if os.path.isfile(file_path): 
+				data.extend(redditor(file_path))
 
-	output_path = path.rsplit("/", 1)[0] + "/data"
+	output_path = "text.txt"
 	with open(output_path, "w", encoding="utf-8") as output_file:
-		for post in posts:
+		for post in data:
 			output_file.write(post + "\n")
 
 def redditor(path: str) -> list[str]:
@@ -30,6 +35,9 @@ def redditor(path: str) -> list[str]:
 		end = html.find(suffix, start)
 		if end == -1:
 			break
-		posts.append(html[start:end])
+
+		comment = html[start:end]
+		print(comment)
+		posts.append(comment)
 
 	return posts
