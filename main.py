@@ -1,4 +1,5 @@
 import requests
+import reddit as reddit
 
 def get_html(url):
 	try:
@@ -9,4 +10,9 @@ def get_html(url):
 		return None
 
 def main():
-	get_html()
+	#get_html()
+	print("hey1")
+	reddit.task()
+	print("hey")
+
+main()
