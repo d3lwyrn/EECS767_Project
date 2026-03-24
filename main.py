@@ -1,5 +1,6 @@
 import requests
-import reddit as reddit
+#import reddit as reddit
+import youtube as youtube
 
 def get_html(url):
 	try:
@@ -11,8 +12,10 @@ def get_html(url):
 
 def main():
 	#get_html()
-	print("hey1")
-	reddit.task()
-	print("hey")
+	#reddit.task()
+
+	print("-- Extracting youtube comments --")
+	youtube.task()
+	print("-- Finished --")
 
 main()
