@@ -29,11 +29,33 @@ def normalize(s):
 	s = s.replace("don't", "do not")
 	s = s.replace("can't", "can not")
 	s = s.replace("won't", "will not")
-	s = s.replace("n't" " not")
+	s = s.replace("we'll", "we will")
+	s = s.replace("n't", " not")
 
-	# remove s's at the end
+	# remove html tags
+	s = strip_html(s)
+
+	# remove punctuation
+	s = s.replace("!", "")
+	s = s.replace("?", "")
+	s = s.replace(".", "")
+	s = s.replace(",", "")
+	s = s.replace("-", "")
 
 	return s
+
+def strip_html(s):
+	"""Remove html tags"""
+	result = ""
+	tag = False
+	for ch in s:
+		if ch == "<":
+			tag = True
+		elif ch == ">":
+			tag = False
+		elif not tag:
+			result += ch
+	return result
 
 def tokenize(s):
 	""""""

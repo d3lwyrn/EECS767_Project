@@ -1,6 +1,7 @@
 import os
 
 def task() -> list[str]:
+	"""Extracts comments in all files in directories"""
 	dirs = [
 		"youtube/palworld/"
 	]
@@ -9,20 +10,26 @@ def task() -> list[str]:
 	# Write all extracted comments
 	output_path = "youtube/text.txt"
 	with open(output_path, "w", encoding="utf-8") as output_file:
+		# Go through each post (youtube video)
 		for post in data:
-			output_file.write(post + "\n")
+			# Go through each comment
+			for comment in post:
+				output_file.write(comment + "\n")
 	return data
 
 def feeder(dirs: list[str]) -> None:
-	data = []
+	"""Feeds files into the youtube comment extractor"""
+	data = {}
 	for dir in dirs:
+		data[dir] = [] # organize comments into a post
 		for filename in os.listdir(dir):
 			file_path = os.path.join(dir, filename)
 			if os.path.isfile(file_path): 
-				data.extend(youtuber(file_path))
+				data[dir].extend(youtuber(file_path))
 	return data
 
 def youtuber(path: str) -> list[str]:
+	"""Extract comments from csv"""
 	#prefix = '<yt-pdg-comment-chip-renderer id="paid-comment-chip" slot="content" class="style-scope ytd-comment-view-model" hidden="">'
 	prefix = 'class="style-scope ytd-comment-view-model"><span class="yt-core-attributed-string yt-core-attributed-string--white-space-pre-wrap" dir="auto" role="text" style="">'
 	suffix = "</span>"
@@ -48,7 +55,7 @@ def youtuber(path: str) -> list[str]:
 		comment = comment.strip()
 		comment = comment.replace("\n", "")
 		comment = comment.replace("\r", "")
-		print(comment)
+		#print(comment)
 		posts.append(comment)
 
 	return posts

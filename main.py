@@ -1,8 +1,9 @@
 import requests
 #import reddit as reddit
 import youtube as youtube
+import sentiment as sentiment
 
-import bag as bag
+import words as words
 
 def get_html(url):
 	try:
@@ -17,13 +18,20 @@ def main():
 	#reddit.task()
 
 	print("-- Extracting youtube comments --")
-	comments = youtube.task()
+	posts = youtube.task()
 	print("-- Finished --")
 
-	print("processing bags of words")
-	for comment in comments:
-		wordbag = bag.generate_bag(comment)
-		print(wordbag)
-	print()
+	for name, comments in posts.items():
+		print("-- Processing bags of words --")
+		wordbags = []
+		for comment in comments:
+			wordbag = words.generate_bag(comment)
+			wordbags.append(wordbag)
+			# print(wordbag)
+		print("-- Finished --")
+
+		print("-- Extracting youtube comments --")
+		sentiment.task(comments, wordbags, True)
+		print("-- Finished --")
 
 main()
