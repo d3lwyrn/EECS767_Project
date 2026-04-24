@@ -1,6 +1,6 @@
 import os
 
-def task() -> None:
+def task() -> list[str]:
 	dirs = [
 		"youtube/palworld/"
 	]
@@ -11,6 +11,7 @@ def task() -> None:
 	with open(output_path, "w", encoding="utf-8") as output_file:
 		for post in data:
 			output_file.write(post + "\n")
+	return data
 
 def feeder(dirs: list[str]) -> None:
 	data = []
@@ -42,7 +43,11 @@ def youtuber(path: str) -> list[str]:
 		if end == -1:
 			break
 
+		# Extract comment
 		comment = html[start:end]
+		comment = comment.strip()
+		comment = comment.replace("\n", "")
+		comment = comment.replace("\r", "")
 		print(comment)
 		posts.append(comment)
 
