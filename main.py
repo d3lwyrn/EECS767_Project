@@ -31,7 +31,7 @@ def main():
 		print("-- Finished --")
 
 		print("-- Extracting youtube comments --")
-		sentiment.task(comments, wordbags, True, name.replace("/",""))
+		sentiment.task(comments, wordbags, True, name.replace('/',''))
 		print("-- Finished --")
 
 main()

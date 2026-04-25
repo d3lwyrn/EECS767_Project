@@ -15,7 +15,7 @@ def task() -> list[str]:
 	# Write all extracted comments
 	# Go through each post (youtube video)
 	for name, post in data.items():
-		output_path = f"extracted/{name.replace("/","")}.txt"
+		output_path = f"extracted/{name.replace('/', '')}.txt"
 		with open(output_path, "w", encoding="utf-8") as output_file:
 			# Go through each comment
 			for comment in post:

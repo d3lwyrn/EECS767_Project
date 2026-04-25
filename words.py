@@ -19,6 +19,8 @@ def normalize(s):
 	# Lowercase
 	s = s.lower()
 
+	
+
 	# Remove whitespaces
 	s = s.replace("\n", " ")
 	s = s.replace("\t", " ")
@@ -26,11 +28,15 @@ def normalize(s):
 		s = s.replace("  ", " ")
 
 	# Handle contractions
-	s = s.replace("don't", "do not")
-	s = s.replace("can't", "can not")
-	s = s.replace("won't", "will not")
-	s = s.replace("we'll", "we will")
+	# s = s.replace("don't", "do not")
+	# s = s.replace("can't", "can not")
+	# s = s.replace("won't", "will not")
+	# s = s.replace("we'll", "we will")
 	s = s.replace("n't", " not")
+	s = s.replace("'", "")
+
+	# handle negation
+	s = s.replace("not ", "not_")
 
 	# remove html tags
 	s = strip_html(s)
