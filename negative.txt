@@ -41,7 +41,6 @@ limit
 ai
 frame drop
 stutter
-texture
 lag
 mid
 ass
@@ -62,7 +61,6 @@ ugly
 crap
 suck
 mobile
-downgrade
 worse
 lame
 suck
@@ -80,3 +78,61 @@ mess
 glitch
 alias
 ew
+fps
+crash
+fan made
+fan-made
+fanmade
+wii
+texture
+gamecube
+profit
+hurt
+jank
+depress
+disturb
+3ds
+wtf
+filler
+no effort
+soulless
+travesty
+bootleg
+worst
+disappointed
+fake
+scam
+butcher
+revolting
+too easy
+upset
+dont like
+rip
+not a fan
+dookie
+oh no
+gone
+skeptical
+chop
+chopiness
+cheap
+hurt
+ps3
+playstation
+low effort
+shame
+isnt good
+recycle
+downgrade
+jpeg
+lifeless
+sad
+bare minimum
+low quality
+stutter
+crap
+stop buying
+ps2
+lackluster
+missing
+copyright
