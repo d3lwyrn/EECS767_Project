@@ -3,15 +3,20 @@ import os
 def task() -> list[str]:
 	"""Extracts comments in all files in directories"""
 	dirs = [
-		"youtube/palworld/"
+		"youtube/pokemon_arceus",
+		"youtube/pokemon_diamond",
+		"youtube/pokemon_scarlet",
+		"youtube/pokemon_sword",
+		"youtube/pokemon_winds",
+		"youtube/pokemon_za",
 	]
 	data = feeder(dirs)
 
 	# Write all extracted comments
-	output_path = "youtube/text.txt"
-	with open(output_path, "w", encoding="utf-8") as output_file:
-		# Go through each post (youtube video)
-		for post in data:
+	# Go through each post (youtube video)
+	for name, post in data.items():
+		output_path = f"extracted/{name.replace("/","")}.txt"
+		with open(output_path, "w", encoding="utf-8") as output_file:
 			# Go through each comment
 			for comment in post:
 				output_file.write(comment + "\n")
@@ -30,8 +35,10 @@ def feeder(dirs: list[str]) -> None:
 
 def youtuber(path: str) -> list[str]:
 	"""Extract comments from csv"""
+	print(f"Extracting {path}")
 	#prefix = '<yt-pdg-comment-chip-renderer id="paid-comment-chip" slot="content" class="style-scope ytd-comment-view-model" hidden="">'
-	prefix = 'class="style-scope ytd-comment-view-model"><span class="yt-core-attributed-string yt-core-attributed-string--white-space-pre-wrap" dir="auto" role="text" style="">'
+	#prefix = 'class="style-scope ytd-comment-view-model"><span class="yt-core-attributed-string yt-core-attributed-string--white-space-pre-wrap" dir="auto" role="text" style="">'
+	prefix = '<yt-attributed-string slot="content" id="content-text" class="style-scope ytd-comment-view-model"><span class="ytAttributedStringHost ytAttributedStringWhiteSpacePreWrap" dir="auto" role="text" style="">'
 	suffix = "</span>"
 
 	with open(path, "r", encoding="utf-8") as file:

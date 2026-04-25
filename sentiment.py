@@ -2,7 +2,7 @@ import os
 import csv
 from datetime import datetime
 
-def task(comments: list, wordbags: list, export: bool = True) -> list:
+def task(comments: list, wordbags: list, export: bool = True, export_name: str = "export") -> list:
 	# Load identifier words
 	neg_words = set(load_words("negative.txt"))
 	pos_words = set(load_words("positive.txt"))
@@ -31,7 +31,7 @@ def task(comments: list, wordbags: list, export: bool = True) -> list:
 
 	# Create csv
 	if export:
-		export_csv(sentiments)
+		export_csv(sentiments, export_name)
 
 	return sentiments
 
@@ -46,8 +46,8 @@ def load_words(file_path: str) -> list[str]:
 				words.append(word)
 	return words
 
-def export_csv(sentiments: list[dict]):
-	filename = f"exports/sentiments_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv"
+def export_csv(sentiments: list[dict], name: str):
+	filename = f"exports/{name}.csv"
 
 	with open(filename, "w", newline="", encoding="utf-8") as file:
 		writer = csv.DictWriter(file, fieldnames=["comment", "score"])
