@@ -44,7 +44,6 @@ stutter
 lag
 mid
 ass
-half-ass
 halfass
 terrible
 horrible
@@ -81,7 +80,6 @@ ew
 fps
 crash
 fan made
-fan-made
 fanmade
 wii
 texture
@@ -137,6 +135,6 @@ lackluster
 missing
 copyright
 joke
-dont cart
+dont care
 i hate
 we hate
