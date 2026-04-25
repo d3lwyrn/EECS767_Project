@@ -39,16 +39,21 @@ def task(comments: list, wordbags: list, export: bool = True, export_name: str =
 
 			weight = 1 # all words are just weighed to 1 by default
 
-			# is it postive or negative?
-			word_class = 0
-			if word in pos_words:
-				word_class = 1
-			if word in neg_words:
-				word_class = -1
+			negated = 0
 
 			# handle negation
+			base_word = word
 			if word[:3] == "not_":
-				word_class = -word_class
+				negated = -1
+				base_word = word[4:]
+
+			# is it postive or negative?
+			word_class = 0
+			if base_word in pos_words:
+				word_class = 1
+			if base_word in neg_words:
+				word_class = -1
+			word_class = word_class*negated
 			
 			if word_class == 1:
 				pos_count += weight*(1/count)
