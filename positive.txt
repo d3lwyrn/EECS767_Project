@@ -73,7 +73,7 @@ hyped
 bless
 blessed
 dream
-draming
+dreaming
 wanted
 sold
 unique
@@ -85,7 +85,7 @@ thx
 glow
 favorite
 boom
-yipee
+yippee
 yes
 yeah
 cooler
