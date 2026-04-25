@@ -3,6 +3,7 @@ import os
 def task() -> list[str]:
 	"""Extracts comments in all files in directories"""
 	dirs = [
+		"youtube/palworld",
 		"youtube/pokemon_arceus",
 		"youtube/pokemon_diamond",
 		"youtube/pokemon_scarlet",

@@ -39,19 +39,21 @@ def task(comments: list, wordbags: list, export: bool = True, export_name: str =
 
 			weight = 1 # all words are just weighed to 1 by default
 
-			negated = 0
+			negated = 1
 
 			# handle negation
-			base_word = word
-			if word[:3] == "not_":
+			whole_word = word.replace("_", " ")
+			subwords = word.split("_")
+			base_word = subwords[-1]
+			if word[:4] == "not_":
 				negated = -1
 				base_word = word[4:]
 
 			# is it postive or negative?
 			word_class = 0
-			if base_word in pos_words:
+			if base_word in pos_words or whole_word in pos_words:
 				word_class = 1
-			if base_word in neg_words:
+			if base_word in neg_words or whole_word in neg_words:
 				word_class = -1
 			word_class = word_class*negated
 			
@@ -62,7 +64,7 @@ def task(comments: list, wordbags: list, export: bool = True, export_name: str =
 
 		raw_score = pos_count - neg_count
 		length = total_tokens
-		normalized_score = raw_score / max(length, 0)
+		normalized_score = raw_score / max(length, 1)
 		score = normalized_score
 
 		comment_class = 0

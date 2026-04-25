@@ -19,8 +19,6 @@ def normalize(s):
 	# Lowercase
 	s = s.lower()
 
-	
-
 	# Remove whitespaces
 	s = s.replace("\n", " ")
 	s = s.replace("\t", " ")
@@ -37,6 +35,13 @@ def normalize(s):
 
 	# handle negation
 	s = s.replace("not ", "not_")
+
+	# context
+	s = s.replace("i ", "i_")
+	s = s.replace("who ", "who_")
+	s = s.replace("oh ", "oh_")
+	s = s.replace("dont ", "dont_")
+	s = s.replace("cant ", "cant_")
 
 	# remove html tags
 	s = strip_html(s)
